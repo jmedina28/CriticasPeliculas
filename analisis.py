@@ -8,3 +8,9 @@ def leer_archivo(archivo):
     return datos
 l = leer_archivo('criticas.csv')
 print(l)
+# la siguiente función crea un diagrama de barras con los datos
+def diagrama_barras(datos, titulo, x, y):
+    plt.bar(datos[x], datos[y]) ,plt.title(titulo)
+    plt.xlabel("Opinión"), plt.ylabel("Cantidad de votantes")
+    plt.show()
+diagrama_barras(l, 'Estudio sobre las críticas de una película', 0, 1)
