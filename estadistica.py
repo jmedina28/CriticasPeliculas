@@ -1,6 +1,7 @@
 from collections import Counter
 from math import *
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class JMPEstadisticas:
@@ -8,7 +9,18 @@ class JMPEstadisticas:
     def __init__(self,caracteristica):
         self.caracteristica = caracteristica
 
+    def leer_archivo(archivo):
+        datos = pd.read_csv(archivo, sep=',', header=None, skiprows=1)
+        return datos
+    l = leer_archivo('criticas.csv')
 
+    def diagrama_barras(datos, titulo, x, y):
+        plt.bar(datos[x], datos[y]) ,plt.title(titulo)
+        plt.xlabel("Opinión"), plt.ylabel("Cantidad de votantes")
+        plt.show()
+    diagrama_barras(l, 'Estudio sobre las críticas de una película', 0, 1)
+    
+    
     def calculoMediaAritmetica(self):
 
         n = self.caracteristica.count()
